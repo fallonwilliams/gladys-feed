@@ -39,7 +39,7 @@ code = dedent("""
 
 
     class DesignAssist:
-        \"\"\"Generate a fast‑track schedule for a project using the Loom Design‑Assist pattern.\"\"\"
+        \"\"\"Generate a fast‑track schedule for a project using the Design‑Assist pattern.\"\"\"
 
         TEMPLATE = [
             Phase('0. Intake',                        2),
