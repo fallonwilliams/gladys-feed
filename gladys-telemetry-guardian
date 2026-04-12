@@ -1,0 +1,21 @@
+from pathlib import Path
+from textwrap import dedent
+
+file_path = Path("/mnt/data/gladys_callsigns.py")
+existing_code = file_path.read_text()
+
+new_entry = dedent("""
+
+# ------------------------------------------------------------------
+#  Artemis II SERCOM call‑sign (telemetry guardian)
+# ------------------------------------------------------------------
+CALL_SIGNS.update({
+    'sercom': CallSign(
+        scientist='Kiarre Dumes',
+        strength='Telemetry vigilance',
+        why='Monitors live Orion sensor streams and leads the post‑landing data offload.'
+    ),
+})
+""")
+
+file_path.write_text(existing_code.rstrip() + new_entry)
