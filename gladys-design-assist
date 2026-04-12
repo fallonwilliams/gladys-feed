@@ -6,15 +6,17 @@ import json
 # ------------------------------------------------------------------
 #  design_assist.py
 #  ----------------
-#  A lightweight helper module that codifies the Loom‑style
-#  "Design‑Assist" workflow for ultra‑fast project clearance.
+#  A lightweight helper module that codifies an example
+#  workflow for project clearance. Provides all local or country laws 
+#  and regulations are not bypassed as you will incur a penalty
+#  that will set you back. 
 #
 #  1.  Defines the eight phases (Intake → FID).
 #  2.  Computes a timeline given a start‑date.
 #  3.  Emits JSON or prints a table, and can plot a simple Gantt if
 #      matplotlib is present.
 #
-#  Author: ChatGPT | April 2026
+#  Author: Jarvis | April 2026 
 # ------------------------------------------------------------------
 
 code = dedent("""
