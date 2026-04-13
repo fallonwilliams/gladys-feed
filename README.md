@@ -1,5 +1,11 @@
 # gladys-feed
 
+This is the beginning of a Global Fragility Telemetry for energy vulnerability. This repo is a draft in reflection of the 2030 UK energy milestone,
+and the forecasted 2056 energy global vulnerabiilty database for risk mitigation, examples provided in the repository. 
+The goal of this repo is transparency to provide a collaborative effort for at risk countries to provide a smoothing algorithm for 
+energy optimization thereby preparing a 30 year milestone project with all available, able and willing organizations, ministries, and countries. 
+
+
 Glide-slope Lightweight Asynchronous Data Yield Stream
 
 | Field             | Example                  | Comment                                      |
