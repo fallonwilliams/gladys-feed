@@ -8,7 +8,7 @@ c = canvas.Canvas(file_path, pagesize=LETTER)
 width, height = LETTER
 
 title = "MEMORANDUM OF UNDERSTANDING (MoU)"
-subtitle = "Deployment of the “Gladys‑in‑a‑Box” Energy‑Telemetry Kit\nand Cloud AI Services"
+subtitle = "Deployment of the GladysDrift telemetry kit and complimentary Cloud AI Services"
 country_placeholder = "<COUNTRY NAME>"
 date_placeholder = "<DD /MM /YYYY>"
 
