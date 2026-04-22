@@ -1,16 +1,23 @@
-from reportlab.lib.pagesizes import LETTER
-from reportlab.pdfgen import canvas
-from reportlab.lib.units import inch
+"""Generic memorandum of understanding template generator.
 
-file_path = "/mnt/data/MoU_template.pdf"
+This file is intentionally generic and avoids naming any real companies,
+programs, customer entities, contact details, or non-public agreement terms.
+"""
+
+from reportlab.lib.pagesizes import LETTER
+from reportlab.lib.units import inch
+from reportlab.pdfgen import canvas
+
+
+file_path = "/mnt/data/mou_template.pdf"
 
 c = canvas.Canvas(file_path, pagesize=LETTER)
 width, height = LETTER
 
 title = "MEMORANDUM OF UNDERSTANDING (MoU)"
-subtitle = "Deployment of the GladysDrift telemetry kit and complimentary Cloud AI Services"
+subtitle = "Example deployment template for a public telemetry pilot"
 country_placeholder = "<COUNTRY NAME>"
-date_placeholder = "<DD /MM /YYYY>"
+date_placeholder = "<DD/MM/YYYY>"
 
 margin = 0.75 * inch
 line_height = 14
@@ -21,46 +28,48 @@ c.drawCentredString(width / 2, y, title)
 
 y -= line_height * 2
 c.setFont("Helvetica", 11)
-for line in subtitle.split("\n"):
-    c.drawCentredString(width / 2, y, line)
-    y -= line_height
+c.drawCentredString(width / 2, y, subtitle)
+y -= line_height * 2
 
-y -= line_height
-
-# Parties table
 c.setFont("Helvetica-Bold", 11)
 c.drawString(margin, y, "Parties")
 y -= line_height
 
 c.setFont("Helvetica", 10)
 parties = [
-    ("Ministry / National Utility of", country_placeholder),
-    ("Amazon Social‑Impact Logistics", "United States"),
-    ("Starlink Community Access Programme", "United States"),
-    ("Open AI Access Fund", "United States"),
-    ("Taiwan Electronics CSR Consortium", "Taiwan"),
+    ("Public-sector energy counterpart", country_placeholder),
+    ("Telemetry platform operator", "<JURISDICTION>"),
+    ("Connectivity provider", "<JURISDICTION>"),
+    ("Cloud services provider", "<JURISDICTION>"),
+    ("Hardware support partner", "<JURISDICTION>"),
 ]
 for org, addr in parties:
-    c.drawString(margin, y, f"• {org}  –  {addr}")
+    c.drawString(margin, y, f"- {org} | {addr}")
     y -= line_height
 
 y -= line_height
 
-# Sections
 sections = [
-    ("1. Purpose",
-     "To deploy the GladysDrift energy‑telemetry kit with free cloud AI services that "
-     "reduce the country’s energy vulnerability."),
-    ("2. Commitments",
-     "Each party agrees to fulfil the obligations outlined in Annex A (attached)."),
-    ("3. Data & Cyber",
-     "Telemetry limited to aggregate feeder loads and environmental data. JSON feeds are signed and "
-     "published under MIT licence. No personal data collected."),
-    ("4. Term & Exit",
-     "This MoU enters into force upon signature and lasts ten (10) years. Either party may withdraw "
-     "with 90‑days written notice."),
-    ("5. Non‑financial Nature",
-     "This MoU imposes no payment obligations on the Government of " + country_placeholder + "."),
+    (
+        "1. Purpose",
+        "To evaluate deployment of a telemetry pilot that improves visibility into grid conditions and operational response.",
+    ),
+    (
+        "2. Commitments",
+        "Each party will define its responsibilities in a public annex or a separately executed agreement.",
+    ),
+    (
+        "3. Data Handling",
+        "Example feed data is limited to operational telemetry. No personal data or secrets are included in this template.",
+    ),
+    (
+        "4. Term and Exit",
+        "This template is illustrative only and requires review before use in any real deployment.",
+    ),
+    (
+        "5. Financial Terms",
+        "No financial commitments are implied by this example template.",
+    ),
 ]
 
 for header, text in sections:
@@ -68,26 +77,23 @@ for header, text in sections:
     c.drawString(margin, y, header)
     y -= line_height
     c.setFont("Helvetica", 10)
-    for para in text.split("\n"):
-        c.drawString(margin + 12, y, para)
-        y -= line_height
-    y -= line_height / 2
+    c.drawString(margin + 12, y, text)
+    y -= line_height * 1.5
 
-# Signature block
 c.setFont("Helvetica-Bold", 11)
 c.drawString(margin, y, "Signed at ______________________ on " + date_placeholder + ":")
 y -= line_height * 2
 
-sig_lines = [
-    "For the Ministry / Utility",
-    "For Amazon Social‑Impact Logistics",
-    "For Starlink Community Access Programme",
-    "For Open AI Access Fund",
-    "For Taiwan Electronics CSR Consortium",
+signatories = [
+    "For the public-sector counterpart",
+    "For the telemetry platform operator",
+    "For the connectivity provider",
+    "For the cloud services provider",
+    "For the hardware support partner",
 ]
 c.setFont("Helvetica", 10)
-for line in sig_lines:
-    c.drawString(margin, y, line + ":  ______________________________")
+for line in signatories:
+    c.drawString(margin, y, line + ": ______________________________")
     y -= line_height * 1.5
 
 c.save()
