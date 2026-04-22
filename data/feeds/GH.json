@@ -1,0 +1,9 @@
+{
+  "iso": "GH",
+  "t": "2026-04-22T15:30:00Z",
+  "edi": -1.2,
+  "fragility": 0.48,
+  "vulnerability": 0.53,
+  "actions_next24h": [7, 13, 19],
+  "ota_hash": "89c773a66453dbe4cc4c5f88ec64af524df9bf3ec76f3c8f81f1e5c078cefe32"
+}

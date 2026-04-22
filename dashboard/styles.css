@@ -1,0 +1,342 @@
+:root {
+  --bg: #07111a;
+  --bg-soft: #0c1a25;
+  --panel: rgba(8, 19, 29, 0.74);
+  --panel-strong: rgba(10, 24, 37, 0.9);
+  --line: rgba(144, 216, 255, 0.14);
+  --text: #edf7ff;
+  --muted: #8eabbc;
+  --cyan: #7ae7ff;
+  --amber: #ffb866;
+  --red: #ff6b6b;
+  --green: #7bf0b5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background:
+    radial-gradient(circle at top left, rgba(122, 231, 255, 0.12), transparent 32%),
+    radial-gradient(circle at right center, rgba(255, 184, 102, 0.08), transparent 24%),
+    linear-gradient(180deg, #09131b 0%, #061018 100%);
+  color: var(--text);
+  font-family: "Space Grotesk", sans-serif;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.85), transparent);
+}
+
+.dashboard-shell {
+  width: min(1200px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 32px 0 56px;
+}
+
+.hero-panel,
+.workspace,
+.signal-panel {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  backdrop-filter: blur(16px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.hero-panel {
+  min-height: 42svh;
+  padding: 28px;
+  display: grid;
+  grid-template-columns: 1.5fr auto;
+  gap: 24px;
+  align-items: start;
+}
+
+.eyebrow,
+.section-label,
+.metric-label,
+.payload-list dt {
+  font-family: "IBM Plex Mono", monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  font-size: 0.76rem;
+}
+
+.hero-copy h1,
+.workspace h2,
+.panel-heading h3 {
+  margin: 0;
+  font-weight: 700;
+  line-height: 0.98;
+}
+
+.hero-copy h1 {
+  max-width: 11ch;
+  font-size: clamp(2.8rem, 8vw, 6.2rem);
+}
+
+.hero-text,
+.section-text,
+.panel-copy,
+.metric-note,
+.payload-list dd,
+.action-list li {
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.hero-text {
+  max-width: 44rem;
+  font-size: 1rem;
+}
+
+.live-pill {
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid rgba(123, 240, 181, 0.18);
+  padding: 14px 18px;
+  border-radius: 999px;
+  background: rgba(9, 26, 21, 0.6);
+  color: var(--green);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.88rem;
+}
+
+.live-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 0 0 rgba(123, 240, 181, 0.5);
+  animation: pulse 1.8s infinite;
+}
+
+.workspace {
+  margin-top: 18px;
+  padding: 24px;
+}
+
+.workspace-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: end;
+}
+
+.workspace h2 {
+  font-size: clamp(2rem, 5vw, 3.4rem);
+}
+
+.metric-grid,
+.detail-grid {
+  display: grid;
+  gap: 18px;
+  margin-top: 20px;
+}
+
+.metric-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.selector-band {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: auto minmax(220px, 320px) 1fr;
+  gap: 14px;
+  align-items: center;
+}
+
+.selector-label,
+.selector-meta,
+.country-select {
+  font-family: "IBM Plex Mono", monospace;
+}
+
+.selector-label,
+.selector-meta {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.country-select {
+  appearance: none;
+  border: 1px solid var(--line);
+  background: rgba(7, 18, 28, 0.95);
+  color: var(--text);
+  padding: 12px 14px;
+  border-radius: 0;
+  outline: none;
+}
+
+.country-select:focus {
+  border-color: rgba(122, 231, 255, 0.5);
+}
+
+.detail-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.metric-block,
+.signal-panel {
+  padding: 22px;
+  position: relative;
+  overflow: hidden;
+}
+
+.metric-block {
+  background: linear-gradient(180deg, rgba(122, 231, 255, 0.05), rgba(10, 24, 37, 0.88));
+  border: 1px solid var(--line);
+}
+
+.metric-value {
+  margin: 10px 0 8px;
+  font-size: clamp(2.3rem, 6vw, 4rem);
+  font-weight: 700;
+}
+
+.signal-panel {
+  background: var(--panel-strong);
+}
+
+.risk-track {
+  width: 100%;
+  height: 14px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(123, 240, 181, 0.18), rgba(255, 184, 102, 0.22), rgba(255, 107, 107, 0.28));
+  overflow: hidden;
+  margin-top: 16px;
+}
+
+.risk-fill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, var(--green), var(--amber), var(--red));
+  transition: width 900ms cubic-bezier(0.2, 1, 0.2, 1);
+}
+
+.risk-scale {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.action-list {
+  margin: 18px 0 0;
+  padding-left: 20px;
+}
+
+.action-list li {
+  margin: 0 0 12px;
+  transition: color 180ms ease, transform 180ms ease;
+}
+
+.action-list li:hover {
+  color: var(--text);
+  transform: translateX(4px);
+}
+
+.payload-list {
+  margin: 18px 0 0;
+  display: grid;
+  gap: 14px;
+}
+
+.payload-list div {
+  display: grid;
+  gap: 6px;
+}
+
+.payload-list dd {
+  margin: 0;
+  font-family: "IBM Plex Mono", monospace;
+  word-break: break-all;
+}
+
+.command-block {
+  display: block;
+  margin-top: 18px;
+  padding: 14px;
+  border: 1px solid rgba(122, 231, 255, 0.14);
+  background: rgba(6, 16, 24, 0.72);
+  color: var(--cyan);
+  font-family: "IBM Plex Mono", monospace;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: revealUp 700ms cubic-bezier(0.2, 1, 0.2, 1) forwards;
+}
+
+.workspace.reveal {
+  animation-delay: 120ms;
+}
+
+.detail-grid.reveal:nth-of-type(3) {
+  animation-delay: 220ms;
+}
+
+.detail-grid.reveal:nth-of-type(4) {
+  animation-delay: 320ms;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(123, 240, 181, 0.45);
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(123, 240, 181, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(123, 240, 181, 0);
+  }
+}
+
+@keyframes revealUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-panel,
+  .workspace-header,
+  .selector-band,
+  .metric-grid,
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .live-pill {
+    justify-self: start;
+  }
+
+  .dashboard-shell {
+    width: min(100% - 20px, 1200px);
+    padding-top: 20px;
+  }
+
+  .hero-panel,
+  .workspace,
+  .signal-panel {
+    padding: 18px;
+  }
+}

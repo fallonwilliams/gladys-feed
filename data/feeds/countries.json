@@ -1,0 +1,26 @@
+[
+  {
+    "iso": "LA",
+    "name": "Laos",
+    "region": "Southeast Asia",
+    "file": "LA.json"
+  },
+  {
+    "iso": "GH",
+    "name": "Ghana",
+    "region": "West Africa",
+    "file": "GH.json"
+  },
+  {
+    "iso": "JO",
+    "name": "Jordan",
+    "region": "Middle East",
+    "file": "JO.json"
+  },
+  {
+    "iso": "UY",
+    "name": "Uruguay",
+    "region": "South America",
+    "file": "UY.json"
+  }
+]

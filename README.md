@@ -1,40 +1,50 @@
 # gladys-feed
 
-This is the beginning of a Global Energy Telemetry Live for energy and earth system. This repo is a draft in reflection of the 2030 UK energy milestone,
-and the forecasted 2056 energy global vulnerabiilty database for risk mitigation, examples provided in the repository. 
-The goal of this repo is transparency to provide a collaborative effort for at risk countries to provide a smoothing algorithm for 
-energy optimization thereby preparing a 30 year milestone project with all available, able and willing organizations, ministries, and countries. 
+`gladys-feed` now contains a concrete `Global Energy Live` implementation instead of loose draft snippets. The repository packages a compact feed generator, an example feed artifact, supporting planning modules, and test coverage.
 
+## Global Energy Live
 
-Glide-slope Lightweight Asynchronous Data Yield Stream
+The feed is intended to stay small enough for low-bandwidth distribution while still exposing the core operational state for a country or region:
 
-| Field             | Example                  | Comment                                      |
-| ----------------- | ------------------------ | -------------------------------------------- |
-| `iso`             | `"LA"`                   | ISO-3166 country code                        |
-| `t`               | `"2026-04-10T06:00:00Z"` | Timestamp                                    |
-| `edi`             | `-0.8`                   | Current Effective Depletion Index (%)        |
-| `fragility`       | `0.31`                   | Rolling fragility score                      |
-| `vulnerability`   | `0.62`                   | Rolling vulnerability score                  |
-| `actions_next24h` | `[2,7,13]`               | IDs to execute next                          |
-| `ota_hash`        | `"ec9c4e..."`            | SHA-256 of the next firmware bundle (if any) |
+| Field | Example | Comment |
+| --- | --- | --- |
+| `iso` | `"LA"` | ISO-3166 country code |
+| `t` | `"2026-04-22T15:30:00Z"` | Timestamp |
+| `edi` | `-0.8` | Effective Depletion Index |
+| `fragility` | `0.31` | Grid resilience stress score |
+| `vulnerability` | `0.35` | Combined exposure and dependency risk |
+| `actions_next24h` | `[2, 7, 13]` | Action IDs to execute next |
+| `ota_hash` | `"4f3988..."` | SHA-256 of the next bundle reference |
 
+## Repo layout
 
-That’s it — always ≤ 1 kB.
+- `src/gladys_feed/`: package code for feed generation, call signs, and planning support.
+- `data/feeds/`: checked-in example feed payloads.
+- `data/feeds/countries.json`: registry used by the multi-country dashboard selector.
+- `dashboard/`: static operator dashboard for the sample feed.
+- `docs/`: implementation notes and migrated draft context.
+- `tests/`: automated coverage for feed scoring and payload generation.
 
+## Quick start
 
-| Cloud                         | Free tier used              | Daily cost | Notes                                                     |
-| ----------------------------- | --------------------------- | ---------- | --------------------------------------------------------- |
-| **GitHub Pages**              | 1 GB storage, unlimited GET | $0         | Each country’s feed lives as `iso.json` in a public repo. |
-| **Cloudflare Workers KV**     | 100 k reads/day             | $0         | Doubles as global CDN; worker updates the JSON.           |
-| **SendGrid Essentials Trial** | 100 emails/day              | $0         | Fallback “email feed” if HTTP fails.                      |
-| **Twilio Trial**              | 100 SMS/month               | $0         | Last-ditch SMS containing `edi` and action count.         |
+```powershell
+python -m pip install -e .[dev]
+python -m gladys_feed.cli `
+  --iso LA `
+  --edi -0.8 `
+  --grid-stability 0.68 `
+  --reserve-margin 0.71 `
+  --import-dependency 0.42 `
+  --climate-exposure 0.33 `
+  --bundle-reference "demo-firmware-v1" `
+  --action 2 `
+  --action 7 `
+  --action 13
+pytest
+```
 
+Open `dashboard/index.html` in a browser to view the static dashboard, or serve the repo locally if your browser blocks local `fetch()` calls. The dashboard now switches between multiple checked-in country feeds from `data/feeds/`.
 
-Because the JSON is static until the next 30-min refresh, it qualifies for permanent caching on the free tiers.
+## Notes
 
-# one-liner cron every 30 min
-curl -s https://gladys-feed.pages.dev/LA.json -o /var/gladys/current.json
-
-# fallback handler snippet
-sms_data=$(gammu getallsms | grep -A1 "GLADYS" | tail -1)
-# SMS example: 2026-04-10T06:00Z EDI=-0.8 ACT=3
+The original root-level draft files were normalized into package modules and documentation so the repo is importable, testable, and ready for further integration work.

@@ -1,0 +1,9 @@
+{
+  "iso": "JO",
+  "t": "2026-04-22T15:30:00Z",
+  "edi": -0.4,
+  "fragility": 0.37,
+  "vulnerability": 0.44,
+  "actions_next24h": [2, 11, 13],
+  "ota_hash": "70372fd00db36e802863f119418f6637f90c0d0b34b9770f3ca8db0a60d7ae1f"
+}
