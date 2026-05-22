@@ -1,10 +1,6 @@
-# Global Energy Live
 
-`Global Energy Live` is the compact telemetry payload described in the repository overview. This document turns that draft into a concrete repo artifact.
+`Global Energy Live` is the example project for sustainability using compact synthetic data as described in the overview. 
 
-## Feed shape
-
-Each feed is a small JSON document intended for low-bandwidth distribution:
 
 ```json
 {
@@ -18,9 +14,9 @@ Each feed is a small JSON document intended for low-bandwidth distribution:
 }
 ```
 
-## Repo integration
+## Repo 
 
-- `src/gladys_feed/global_energy_live.py` computes feed payloads.
-- `src/gladys_feed/cli.py` generates a payload from the command line.
-- `data/feeds/LA.json` is the checked-in example feed.
-- `tests/test_global_energy_live.py` validates scoring and payload generation.
+- `src/gladys_feed/global_energy_live.py` computes feed ranking
+- `src/gladys_feed/cli.py` generates a sustainability score
+- `data/feeds/LA.json` is the example feed.
+- `tests/test_global_energy_live.py` validates scoring
