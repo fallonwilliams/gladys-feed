@@ -1,29 +1,29 @@
 # gladys-feed
 
-`gladys-feed` now contains a concrete `Global Energy Live` implementation instead of loose draft snippets. The repository packages a compact feed generator, an example feed artifact, supporting planning modules, and test coverage.
+`gladys-feed` now contains a concrete `Global Energy Live` for sustainability goals 2056. 
 
-## Global Energy Live
+## Global Sustainability Live
 
-The feed is intended to stay small enough for low-bandwidth distribution while still exposing the core operational state for a country or region:
+The repository packages a compact feed for researching environmental changes for sustainability. 
 
 | Field | Example | Comment |
 | --- | --- | --- |
-| `iso` | `"LA"` | ISO-3166 country code |
+| `iso` | `"LA"` | Example of Code for Locations Using UNNESCO locations for World Historical Sites|
 | `t` | `"2026-04-22T15:30:00Z"` | Timestamp |
-| `edi` | `-0.8` | Effective Depletion Index |
-| `fragility` | `0.31` | Grid resilience stress score |
-| `vulnerability` | `0.35` | Combined exposure and dependency risk |
-| `actions_next24h` | `[2, 7, 13]` | Action IDs to execute next |
+| `edi` | `-0.8` | Example Depletion Index |
+| `fragility` | `0.31` | Sustainabiliy Capacity Rankings|
+| `vulnerability` | `0.35` |Sustainability Risk |
+| `actions_next24h` | `[2, 7, 13]` | Next Example  |
 | `ota_hash` | `"4f3988..."` | SHA-256 of the next bundle reference |
 
 ## Repo layout
 
-- `src/gladys_feed/`: package code for feed generation, call signs, and planning support.
-- `data/feeds/`: checked-in example feed payloads.
-- `data/feeds/countries.json`: registry used by the multi-country dashboard selector.
-- `dashboard/`: static operator dashboard for the sample feed.
-- `docs/`: implementation notes and migrated draft context.
-- `tests/`: automated coverage for feed scoring and payload generation.
+- `src/gladys_feed/`: package code for planning support.
+- `data/feeds/`: checked-in example
+- `data/feeds/countries.json`: registry dashboard selector.
+- `dashboard/`: static operator dashboard for the sample .
+- `docs/`: notes and migrated draft context.
+- `tests/`:  coverage scoring for ranking sustainability metrics 
 
 ## Quick start
 
@@ -43,8 +43,8 @@ python -m gladys_feed.cli `
 pytest
 ```
 
-Open `dashboard/index.html` in a browser to view the static dashboard, or serve the repo locally if your browser blocks local `fetch()` calls. The dashboard now switches between multiple checked-in country feeds from `data/feeds/`.
+Open `dashboard/index.html` in a browser to view the static dashboard, or serve the repo locally if your browser blocks local `fetch()` calls.
 
 ## Notes
 
-The original root-level draft files were normalized into package modules and documentation so the repo is importable, testable, and ready for further integration work.
+The package modules and documentation are compact to be ready for further research and sustainability development work.
