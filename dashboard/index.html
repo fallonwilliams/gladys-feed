@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Global Energy Live Dashboard</title>
+  <title>Sustainability Dashboard</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -13,9 +13,9 @@
   <main class="dashboard-shell">
     <section class="hero-panel reveal">
       <div class="hero-copy">
-        <p class="eyebrow">Global Energy Live</p>
-        <h1>Telemetry surface for grid stress, vulnerability, and next actions.</h1>
-        <p class="hero-text">A compact operator view over the checked-in country feed. Built to stay readable under low bandwidth and fast decision pressure.</p>
+        <p class="eyebrow">Global Sustainability Live</p>
+        <h1>Surface for Sustainability Metrics that Impact Envrionmental Forecasting</h1>
+        <p class="hero-text">A compact view built to stay readable for every person</p>
       </div>
       <div class="live-pill">
         <span class="live-dot"></span>
@@ -29,30 +29,30 @@
           <p class="section-label">Selected Feed</p>
           <h2 id="feedTitle">Country feed</h2>
         </div>
-        <p class="section-text">The dashboard reads the versioned JSON feed in this repository and translates it into an operator-facing surface.</p>
+        <p class="section-text">The dashboard reads the users local sustainabilty metrics feed and translates it into a dashboard surface.</p>
       </div>
 
       <div class="selector-band">
-        <label class="selector-label" for="countrySelect">Country feed</label>
+        <label class="selector-label" for="countrySelect">User Local Sustainability Feed</label>
         <select id="countrySelect" class="country-select" aria-label="Select country feed"></select>
         <p class="selector-meta" id="feedRegion">Loading regions...</p>
       </div>
 
       <div class="metric-grid">
         <article class="metric-block">
-          <p class="metric-label">Effective Depletion Index</p>
+          <p class="metric-label">Sustainability Index </p>
           <p class="metric-value" id="ediValue">--</p>
-          <p class="metric-note">Current depletion pressure relative to normal operating conditions.</p>
+          <p class="metric-note">Current sustainabiilty metrics relative to users manual input.</p>
         </article>
         <article class="metric-block">
           <p class="metric-label">Fragility</p>
           <p class="metric-value" id="fragilityValue">--</p>
-          <p class="metric-note">Higher values indicate less grid resilience.</p>
+          <p class="metric-note">Higher values indicate local user inputs for levels of sustainable metrics</p>
         </article>
         <article class="metric-block">
           <p class="metric-label">Vulnerability</p>
           <p class="metric-value" id="vulnerabilityValue">--</p>
-          <p class="metric-note">Combined exposure, dependency, and operational risk.</p>
+          <p class="metric-note">Combined water capacity, carbon, clean energy metrics per region.</p>
         </article>
       </div>
     </section>
@@ -60,8 +60,8 @@
     <section class="detail-grid reveal">
       <article class="signal-panel">
         <div class="panel-heading">
-          <p class="section-label">Signal Health</p>
-          <h3>Risk posture</h3>
+          <p class="section-label">Sustainable Risk Management</p>
+          <h3> Managebility </h3>
         </div>
         <div class="risk-band">
           <div class="risk-track">
@@ -69,8 +69,8 @@
           </div>
           <div class="risk-scale">
             <span>Stable</span>
-            <span>Stressed</span>
-            <span>Critical</span>
+            <span>Average</span>
+            <span>High</span>
           </div>
         </div>
         <p class="panel-copy" id="riskSummary">Loading current posture...</p>
@@ -114,7 +114,7 @@
           <p class="section-label">Retrieval</p>
           <h3>Source and fallback</h3>
         </div>
-        <p class="panel-copy">Primary source is the repository JSON feed. The original concept still supports static distribution to edge systems and narrow-band fallback paths.</p>
+        <p class="panel-copy"></p>
         <code class="command-block" id="feedCommand">curl -s ./data/feeds/LA.json</code>
       </article>
     </section>
